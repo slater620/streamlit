@@ -34,17 +34,17 @@ def main():
     st.markdown(style, unsafe_allow_html=True)
 
     # Entrée des caractéristiques du billet
-    with st.beta_container():
+    with st.container():
         st.write("Diagonal et Hauteur gauche")
         diagonal = horizontal_input('Diagonal')
         height_left = horizontal_input('Hauteur gauche')
 
-    with st.beta_container():
+    with st.container():
         st.write("Hauteur droite et Marge inférieure")
         height_right = horizontal_input('Hauteur droite')
         margin_low = horizontal_input('Marge inférieure')
 
-    with st.beta_container():
+    with st.container():
         st.write("Marge supérieure et Longueur")
         margin_up = horizontal_input('Marge supérieure')
         length = horizontal_input('Longueur')
@@ -57,6 +57,10 @@ def main():
             st.write('Le billet est authentique.')
         else:
             st.write('Le billet est un faux.')
+        
+        # Afficher la jauge de probabilité
+        st.progress(proba[1])  # Probabilité d'obtention d'un faux billet
+
         st.write(f'Probabilité d\'obtention d\'un vrai billet : {proba[0]:.2f}')
         st.write(f'Probabilité d\'obtention d\'un faux billet : {proba[1]:.2f}')
 
