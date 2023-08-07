@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Charger le modèle entraîné
-model = joblib.load('chemin/vers/votre/modele.pkl')
+model = joblib.load('model_opti.pkl')
 
 # Fonction de prédiction et de probabilité
 def predict_fake_bill(features):
@@ -14,7 +14,7 @@ def predict_fake_bill(features):
 
 # Définition d'un widget personnalisé pour aligner les caractéristiques horizontalement
 def horizontal_input(label, min_value=0.0):
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     return col1.slider(label, min_value=min_value)
 
 # Personnalisation du style avec CSS
