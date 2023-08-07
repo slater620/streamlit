@@ -15,7 +15,7 @@ def predict_fake_bill(features):
 # Définition d'un widget personnalisé pour aligner les caractéristiques horizontalement
 def horizontal_input(label, min_value=0.0):
     col1, col2 = st.beta_columns(2)
-    return col1.slider(label, min_value=min_value)S
+    return col1.slider(label, min_value=min_value)
 
 # Personnalisation du style avec CSS
 style = """
