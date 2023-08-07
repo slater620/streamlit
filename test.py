@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Charger le modèle entraîné
-model = joblib.load('model_opti.pkl')
+model = joblib.load('chemin/vers/votre/modele.pkl')
 
 # Fonction de prédiction et de probabilité
 def predict_fake_bill(features):
@@ -34,20 +34,17 @@ def main():
     st.markdown(style, unsafe_allow_html=True)
 
     # Entrée des caractéristiques du billet
-    with st.container():
-        st.write("Diagonal et Hauteur gauche")
-        diagonal = horizontal_input('Diagonal')
-        height_left = horizontal_input('Hauteur gauche')
+    st.write("Diagonal et Hauteur gauche")
+    diagonal = horizontal_input('Diagonal')
+    height_left = horizontal_input('Hauteur gauche')
 
-    with st.container():
-        st.write("Hauteur droite et Marge inférieure")
-        height_right = horizontal_input('Hauteur droite')
-        margin_low = horizontal_input('Marge inférieure')
+    st.write("Hauteur droite et Marge inférieure")
+    height_right = horizontal_input('Hauteur droite')
+    margin_low = horizontal_input('Marge inférieure')
 
-    with st.container():
-        st.write("Marge supérieure et Longueur")
-        margin_up = horizontal_input('Marge supérieure')
-        length = horizontal_input('Longueur')
+    st.write("Marge supérieure et Longueur")
+    margin_up = horizontal_input('Marge supérieure')
+    length = horizontal_input('Longueur')
 
     # Bouton pour prédire
     if st.button('Prédire'):
