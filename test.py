@@ -43,8 +43,9 @@ def main():
         ax.set_ylim(0, 100)
         circle = plt.Circle((50, 50), 40, color='lightgray')
         ax.add_artist(circle)
-        wedge = plt.Wedge(center=(50, 50), r=40, theta1=0, theta2=proba_vrai_billet, color='blue', alpha=0.7)
-        ax.add_artist(wedge)
+        angle = 360 * proba_vrai_billet / 100
+        arc = plt.patches.Arc((50, 50), 80, 80, angle=0, theta1=0, theta2=angle, color='blue', alpha=0.7)
+        ax.add_artist(arc)
         ax.text(50, 50, f'{proba_vrai_billet:.1f}%', va='center', ha='center', fontsize=12)
         st.pyplot(fig)
 
