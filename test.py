@@ -38,8 +38,8 @@ def main():
         # Affichage des probabilités sous forme de jauge circulaire
         fig, ax = plt.subplots()
         labels = ['Vrai billet', 'Faux billet']
-        wedges, text = ax.pie(proba, labels=labels, autopct='%1.1f%%', startangle=90)
-        plt.axis('equal')
+        ax.pie(proba, labels=labels, autopct='%1.1f%%', startangle=90)
+        ax.axis('equal')
         st.pyplot(fig)
 
 if __name__ == '__main__':
