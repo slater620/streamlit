@@ -1,6 +1,8 @@
 import streamlit as st
 import joblib
 import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.patches import PathPatch
 
 # Charger le modèle entrainé
 model = joblib.load('model_opti.pkl')
@@ -33,8 +35,16 @@ def main():
             st.write('Le billet est authentique.')
         else:
             st.write('Le billet est un faux.')
-        st.write(f'Probabilité d\'obtention d\'un vrai billet : {proba[0]:.2f}')
-        st.write(f'Probabilité d\'obtention d\'un faux billet : {proba[1]:.2f}')
+        
+        # Affichage des probabilités sous forme de jauge circulaire
+        fig, ax = plt.subplots()
+        labels = ['Vrai billet', 'Faux billet']
+        wedges, patches, text = ax.pie(proba, labels=labels, autopct='%1.1f%%', startangle=90)
+        for patch in patches:
+            patch.set_linewidth(0)
+            patch.set_edgecolor('white')
+        plt.axis('equal')
+        st.pyplot(fig)
 
 if __name__ == '__main__':
     main()
