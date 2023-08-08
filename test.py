@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Charger le modèle entrainé
 model = joblib.load('model_opti.pkl')
@@ -35,11 +36,16 @@ def main():
         else:
             st.write('Le billet est un faux.')
         
-        # Affichage des probabilités sous forme de jauge circulaire
+        # Affichage de la probabilité en pourcentage dans une jauge circulaire
+        proba_vrai_billet = proba[0] * 100
         fig, ax = plt.subplots()
-        labels = ['Vrai billet', 'Faux billet']
-        ax.pie(proba, labels=labels, autopct='%1.1f%%', startangle=90)
-        ax.axis('equal')
+        ax.set_xlim(0, 100)
+        ax.set_ylim(0, 100)
+        circle = plt.Circle((50, 50), 40, color='lightgray')
+        ax.add_artist(circle)
+        wedge = plt.Wedge(center=(50, 50), r=40, theta1=0, theta2=proba_vrai_billet, color='blue', alpha=0.7)
+        ax.add_artist(wedge)
+        ax.text(50, 50, f'{proba_vrai_billet:.1f}%', va='center', ha='center', fontsize=12)
         st.pyplot(fig)
 
 if __name__ == '__main__':
