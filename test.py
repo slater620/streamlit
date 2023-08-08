@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.patches import Arc
 import numpy as np
 
 # Charger le modèle entrainé
@@ -38,15 +39,12 @@ def main():
         
         # Affichage de la probabilité en pourcentage dans une jauge circulaire
         proba_vrai_billet = proba[0] * 100
-        fig, ax = plt.subplots()
-        ax.set_xlim(0, 100)
-        ax.set_ylim(0, 100)
-        circle = plt.Circle((50, 50), 40, color='lightgray')
-        ax.add_artist(circle)
         angle = 360 * proba_vrai_billet / 100
-        wedge = plt.Circle((50, 50), 40, color='blue', alpha=0.7, fill=False, linewidth=20)
-        ax.add_artist(wedge)
-        ax.text(50, 50, f'{proba_vrai_billet:.1f}%', va='center', ha='center', fontsize=12)
+        fig, ax = plt.subplots()
+        ax.add_patch(Arc((0.5, 0.5), 1, 1, angle=0, theta1=0, theta2=angle, color='blue', alpha=0.7))
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.axis('off')
         st.pyplot(fig)
 
 if __name__ == '__main__':
