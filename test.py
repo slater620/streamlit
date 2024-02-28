@@ -9,8 +9,8 @@ st.title('Prédiction du nutri_score')
 
 # Entrée des caractéristiques
 product = st.text_input('nom du produit', value="")
-energy = st.number_input('Énergie pour 100g', value=0)
-saturated_fat = st.number_input('Matières grasses saturées pour 100g', value=0)
+energy = st.number_input('Énergie pour 100g',step=1.,format="%.2f")
+saturated_fat = st.number_input('Matières grasses saturées pour 100g',step=1.,format="%.2f")
 sugars = st.number_input('Sucres pour 100g', value=0)
 fiber = st.number_input('Fibres pour 100g', value=0)
 proteins = st.number_input('Protéines pour 100g', value=0)
