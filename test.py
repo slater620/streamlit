@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 # Charger le modèle
-model = joblib.load('model_adaBoot.joblib')
+model = joblib.load('model.joblib')
 
 # Interface utilisateur
 st.title('Prédiction du nutri_score')
