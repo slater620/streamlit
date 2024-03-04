@@ -20,4 +20,13 @@ salt = st.number_input('Sel pour 100g',step=1.,format="%.2f")
 if st.button('Prédire'):
     features = [[energy, saturated_fat, sugars, fiber, proteins, salt]]
     prediction = model.predict(features)
-    st.write('Le nutri_score de', product, 'est', prediction[0])
+    if (prediction == 0):
+        st.write('Le nutri_score de', product, 'est A')
+    if (prediction == 1):
+        st.write('Le nutri_score de', product, 'est B')
+    if (prediction == 2):
+        st.write('Le nutri_score de', product, 'est C')
+    if (prediction == 3):
+        st.write('Le nutri_score de', product, 'est D')
+    if (prediction == 4):
+        st.write('Le nutri_score de', product, 'est E')
